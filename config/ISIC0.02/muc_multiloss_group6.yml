@@ -1,0 +1,37 @@
+Dataset:
+  name: "ISIC"
+  data_dir: "/home/yeep/project/py/deeplearning/AL-ACDC/data/ISIC"
+  initial_labeled: 0.02
+  batch_size: 16
+  num_workers: 4
+  input_size: 256
+
+Training:
+  Trainer: MultiLossMUCTrainer
+  output_dir: "/home/yeep/project/py/deeplearning/SSL-MUC/out_dir/ISIC0.02/MultiLossMUC_group6"
+  device: "cuda:0"
+  iter_max: 30000
+  iter_valid: 200
+  early_stop_patience: 10000
+  lr: 1.0e-3
+  lr_gamma: 0.5
+  ReduceLROnPlateau_patience: 20
+  weight_decay: 1.0e-5
+  seed: 3407
+  rampup_start: 2000
+  rampup_end: 35000
+  regularize_w: 0.1
+  rampup_mode: "linear"
+
+
+Network:
+  class_num: 2
+  ndf: 42
+  in_chns: 3
+  feature_grps: [6, 6]
+  norm_type: [ "instance_norm", "instance_norm" ]
+  acti_func: "relu"
+  decoder_ratio: 1
+  dropout: true
+
+
